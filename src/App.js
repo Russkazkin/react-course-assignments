@@ -12,7 +12,7 @@ function App() {
     return (
         <div className="App container">
             <div className="row">
-                <UserInput changeName={changeMyName}/>
+                <UserInput changeName={changeMyName} usernames={usernames}/>
                 <UserOutput username={usernames[0]}/>
                 <UserOutput username={usernames[1]}/>
                 <button onClick={showSurnames} className="btn btn-success btn-sm mt-5">Show Surnames</button>

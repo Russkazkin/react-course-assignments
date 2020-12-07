@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserInput = ({changeName}) => {
+const UserInput = ({usernames, changeName}) => {
     return (
         <div className="col">
             <div className="card">
@@ -10,7 +10,7 @@ const UserInput = ({changeName}) => {
                     </h5>
                     <div className="mb-3">
                         <input onChange={(e) => changeName(e.target.value)}
-                               type="text" className="form-control" />
+                               type="text" className="form-control" value={usernames[0]}/>
                     </div>
                 </div>
             </div>
