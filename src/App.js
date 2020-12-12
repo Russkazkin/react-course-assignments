@@ -4,16 +4,18 @@ import React, {useState} from "react";
 import UserInput from "./Components/UserInput/UserInput";
 import UserOutput from "./Components/UserOutput/UserOutput";
 import Validation from "./Components/Validation/Validation";
+import Char from "./Components/Char/Char";
 
 
 function App() {
     const [usernames, setUsernames] = useState(['Ruslan', 'Sergey']);
-    const [textInput, setTextInput] = useState('Here will be your text');
+    const [textInput, setTextInput] = useState('CHARS');
     const [inputLength, setInputLength] = useState(0);
     const showSurnames = () => setUsernames(['Skazkopodatelev', 'Vechersky']);
     const changeMyName = (newName) => setUsernames([newName, 'Sergey']);
     const changeInputHandler = (inputText) => setTextInput(inputText);
     const inputLengthHandler = (inputLength) => setInputLength(inputLength);
+    const charsArr = textInput.split('');
     return (
         <div className="App container">
             <h3 className="mb-3">Assignment 1</h3>
@@ -45,9 +47,7 @@ function App() {
                 </div>
                 <div className="col">
                     <div className="card">
-                        <div className="card-body">
-                            {textInput}
-                        </div>
+                        {charsArr.map((char, index) => <Char char={char} key={index}/>)}
                     </div>
                 </div>
             </div>
