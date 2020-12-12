@@ -39,6 +39,7 @@ function App() {
                                 <input type="text"
                                        className={"form-control " + (inputLength < 5 ? 'is-invalid' : 'is-valid')}
                                        id="floatingInput"
+                                       value={textInput}
                                        onChange={(event) => {
                                            changeInputHandler(event.target.value);
                                            inputLengthHandler(event.target.value.length);
