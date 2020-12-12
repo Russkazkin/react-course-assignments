@@ -3,14 +3,17 @@ import './App.sass';
 import React, {useState} from "react";
 import UserInput from "./Components/UserInput/UserInput";
 import UserOutput from "./Components/UserOutput/UserOutput";
+import Validation from "./Components/Validation/Validation";
 
 
 function App() {
     const [usernames, setUsernames] = useState(['Ruslan', 'Sergey']);
-    const [textInput, setTextInput] = useState(['Here will be your text']);
+    const [textInput, setTextInput] = useState('Here will be your text');
+    const [inputLength, setInputLength] = useState(0);
     const showSurnames = () => setUsernames(['Skazkopodatelev', 'Vechersky']);
     const changeMyName = (newName) => setUsernames([newName, 'Sergey']);
-    const changeInput = (inputText) => setTextInput(inputText);
+    const changeInputHandler = (inputText) => setTextInput(inputText);
+    const inputLengthHandler = (inputLength) => setInputLength(inputLength);
     return (
         <div className="App container">
             <h3 className="mb-3">Assignment 1</h3>
@@ -22,23 +25,31 @@ function App() {
             </div>
             <h3 className="mb-3">Assignment 2</h3>
             <div className="row">
-                <div className="col"><div className="card">
-                    <div className="card-body">
-                        <div className="form-floating mb-3">
-                            <input type="text"
-                                   className="form-control"
-                                   id="floatingInput"
-                                   onChange={(event) => changeInput(event.target.value)}
-                                   placeholder="name@example.com"/>
-                            <label htmlFor="floatingInput">Start to type</label>
+                <div className="col">
+                    <div className="card">
+                        <div className="card-body">
+                            <div className="form-floating mb-3">
+                                <input type="text"
+                                       className={"form-control " + (inputLength < 5 ? 'is-invalid' : 'is-valid')}
+                                       id="floatingInput"
+                                       onChange={(event) => {
+                                           changeInputHandler(event.target.value);
+                                           inputLengthHandler(event.target.value.length);
+                                       }}
+                                       placeholder="name@example.com"/>
+                                <label htmlFor="floatingInput">Start to type</label>
+                                <Validation inputLength={inputLength} />
+                            </div>
                         </div>
                     </div>
-                </div></div>
-                <div className="col"><div className="card">
-                    <div className="card-body">
-                        {textInput}
+                </div>
+                <div className="col">
+                    <div className="card">
+                        <div className="card-body">
+                            {textInput}
+                        </div>
                     </div>
-                </div></div>
+                </div>
             </div>
         </div>
     );
