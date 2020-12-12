@@ -1,8 +1,9 @@
 import React from "react";
+import "./Char.sass";
 
-const Char = ({char}) => {
+const Char = ({char, click}) => {
     return (
-        <div className="alert alert-primary">
+        <div onClick={click} className="Char alert alert-primary d-inline-block">
             {char}
         </div>
     );

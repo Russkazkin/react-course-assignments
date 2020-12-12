@@ -15,6 +15,11 @@ function App() {
     const changeMyName = (newName) => setUsernames([newName, 'Sergey']);
     const changeInputHandler = (inputText) => setTextInput(inputText);
     const inputLengthHandler = (inputLength) => setInputLength(inputLength);
+    const removeCharHandler = (index) => {
+        const arr = textInput.split('');
+        arr.splice(index, 1);
+        setTextInput(arr.join(''));
+    };
     const charsArr = textInput.split('');
     return (
         <div className="App container">
@@ -40,14 +45,19 @@ function App() {
                                        }}
                                        placeholder="name@example.com"/>
                                 <label htmlFor="floatingInput">Start to type</label>
-                                <Validation inputLength={inputLength} />
+                                <Validation inputLength={inputLength}/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="col">
                     <div className="card">
-                        {charsArr.map((char, index) => <Char char={char} key={index}/>)}
+                        <div className="card-body d-flex justify-content-center">
+                            {charsArr.map((char, index) => <Char
+                                char={char}
+                                click={() => removeCharHandler(index)}
+                                key={index}/>)}
+                        </div>
                     </div>
                 </div>
             </div>
