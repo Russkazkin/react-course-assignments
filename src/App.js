@@ -8,6 +8,7 @@ import Validation from "./Components/Validation/Validation";
 import Char from "./Components/Char/Char";
 import Users from "./containers/Users/Users";
 import Courses from "./containers/Courses/Courses";
+import Course from "./containers/Course/Course";
 
 function App() {
     const [usernames, setUsernames] = useState(['Ruslan', 'Sergey']);
@@ -48,6 +49,7 @@ function App() {
                             <Route exact path="/users" component={Users} />
                             <Route exact path="/courses" component={Courses} />
                             <Route exact path="/" render={() => <h1>Home</h1>} />
+                            <Route exact path="/courses/:id" component={Course} />
                         </Switch>
                     </div>
                 </section>
