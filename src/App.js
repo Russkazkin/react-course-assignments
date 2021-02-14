@@ -1,12 +1,13 @@
 import 'bootstrap/scss/bootstrap.scss';
 import './App.sass';
 import React, {useState} from "react";
-import {BrowserRouter} from "react-router-dom"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 import UserInput from "./Components/UserInput/UserInput";
 import UserOutput from "./Components/UserOutput/UserOutput";
 import Validation from "./Components/Validation/Validation";
 import Char from "./Components/Char/Char";
-
+import Users from "./containers/Users/Users";
+import Courses from "./containers/Courses/Courses";
 
 function App() {
     const [usernames, setUsernames] = useState(['Ruslan', 'Sergey']);
@@ -37,6 +38,12 @@ function App() {
                     <li>Add a 404 error page and render it for any unknown routes</li>
                     <li>Redirect requests to /all-courses to /courses (=> Your "Courses" page)</li>
                 </ol>
+                <div className="p-5 border mb-5">
+                    <Switch>
+                        <Route exact path="/users" component={Users} />
+                        <Route exact path="/courses" component={Courses} />
+                    </Switch>
+                </div>
             </section>
             <section>
                 <h3 className="mb-3">Assignment 1</h3>
