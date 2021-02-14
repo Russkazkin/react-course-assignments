@@ -1,14 +1,13 @@
 import 'bootstrap/scss/bootstrap.scss';
 import './App.sass';
 import React, {useState} from "react";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom"
+import { BrowserRouter, Switch, Route, NavLink, Redirect } from "react-router-dom"
 import UserInput from "./Components/UserInput/UserInput";
 import UserOutput from "./Components/UserOutput/UserOutput";
 import Validation from "./Components/Validation/Validation";
 import Char from "./Components/Char/Char";
 import Users from "./containers/Users/Users";
 import Courses from "./containers/Courses/Courses";
-import Course from "./containers/Course/Course";
 
 function App() {
     const [usernames, setUsernames] = useState(['Ruslan', 'Sergey']);
@@ -46,6 +45,7 @@ function App() {
                     </ol>
                     <div className="p-5 border mb-5">
                         <Switch>
+                            <Redirect from="/all-courses" to="/courses" />
                             <Route exact path="/users" component={Users} />
                             <Route path="/courses" component={Courses} />
                             <Route exact path="/" render={() => <h1>Home</h1>} />
