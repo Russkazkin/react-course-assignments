@@ -47,9 +47,8 @@ function App() {
                     <div className="p-5 border mb-5">
                         <Switch>
                             <Route exact path="/users" component={Users} />
-                            <Route exact path="/courses" component={Courses} />
+                            <Route path="/courses" component={Courses} />
                             <Route exact path="/" render={() => <h1>Home</h1>} />
-                            <Route exact path="/courses/:id" component={Course} />
                         </Switch>
                     </div>
                 </section>
