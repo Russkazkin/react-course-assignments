@@ -49,6 +49,7 @@ function App() {
                             <Route exact path="/users" component={Users} />
                             <Route path="/courses" component={Courses} />
                             <Route exact path="/" render={() => <h1>Home</h1>} />
+                            <Route render={() => <h1>404 Not found</h1>} />
                         </Switch>
                     </div>
                 </section>
